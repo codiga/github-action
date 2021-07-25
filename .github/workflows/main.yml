@@ -25,4 +25,4 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 0
       - name: "✅ Check"
-        run: docker build -t codeinspectorio/github-action -f Dockerfile . 
+        run: docker build -t codeinspectorio/github-action -f Dockerfile .
