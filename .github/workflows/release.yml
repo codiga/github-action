@@ -1,0 +1,24 @@
+name: "tagged-release"
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+  workflow_dispatch:
+
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "📥 Checkout Code"
+        uses: actions/checkout@v2.3.4
+        with:
+          submodules: 'recursive'
+          fetch-depth: 0
+      - name: "✅ Check"
+        run: docker build -t codeinspectorio/github-action -f Dockerfile .
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false 
