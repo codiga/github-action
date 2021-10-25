@@ -5,11 +5,17 @@ inputs:
     description: 'Token to checkout the repository.'
     required: true
   code_inspector_access_key:
-    description: 'Access key on Code Inspector'
+    description: 'Access key on Code Inspector. Set to none if you use the API Token.'
     required: true
+    default: ''
   code_inspector_secret_key:
-    description: 'Secret key on Code Inspector'
+    description: 'Secret key on Code Inspector. Set to none if you use the API Token.'
     required: true
+    default: ''
+  code_inspector_api_token:
+    description: 'API Token to access Code Inspector. Set to none if you use access and secret keys'
+    required: true
+    default: ''
   min_quality_grade:
     description: 'Minimum grade. Valid options are EXCELLENT, GOOD, NEUTRAL, WARNING, CRITICAL. Leave blank to ignore.'
     required: true
@@ -38,6 +44,10 @@ inputs:
     description: 'Timeout before giving up (in case analysis takes too long). Default is 10 minutes'
     required: true
     default: '600'
+  force_ref:
+    description: 'Force the GitHub action to analyze a given ref. Leave to none if you want to analyze branch being pushed (default)'
+    required: true
+    default: 'none'
 branding:
   icon: 'search'  
   color: 'blue'
@@ -52,3 +62,4 @@ runs:
     - ${{ inputs.max_long_functions_rate }}
     - ${{ inputs.project_name }}
     - ${{ inputs.max_timeout_sec }}
+    - ${{ inputs.force_ref }}

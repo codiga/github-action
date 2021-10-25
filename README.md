@@ -19,38 +19,33 @@ The action lets you customize the number of metrics based on
 
 ## How to use it?
 
-### Step 1: Get your Code Inspector API keys
+### Step 1: Get your Code Inspector API Token
 
 Sign up on [Code Inspector](https://www.code-inspector.com).
 
-In your profile, generate API keys.
+In the top right menu go to API token
 
-![Generate API keys](images/ci-generate-api-keys.png)
-
-
-Once you click on the button, the following window will appear.
-
-![Example API keys](images/ci-api-keys.png)
+![Generate API Token](images/api-token-creation.gif)
 
 
-### Step 2: Configure your Code Inspector API keys in your GitHub repository
+Create a token and save it.
 
-You need to add your Code Inspector API keys into GitHub.
+
+### Step 2: Configure your Code Inspector API Token in your GitHub repository
+
+You need to add your Code Inspector API Token into GitHub.
 
 On GitHub, go in your repository settings, click on the secret *Secrets* (on the right) and create a new secret.
 
-Create a secret called `CODE_INSPECTOR_ACCESS_KEY` and set it to the value of the access key generated at the previous step.
+Create a secret called `CODE_INSPECTOR_API_TOKEN` and set it to the value of the API token generated at the previous step.
 
-![Example API keys](images/github-add-access-key.png)
+![Create API token on GitHub](images/github-add-api-token.png)
 
 
-Create another secret called `CODE_INSPECTOR_SECRET_KEY` and set it to the value of the secret key generated at the previous step.
+Once the secret is created, the secrets page will look as follow.
 
-![Example API keys](images/github-add-secret-key.png)
 
-Once all secrets have been created, we should have the following secrets generated.
-
-![Example API keys](images/github-keys-generated.png)
+![Example API token on GitHub](images/github-action-secrets.png)
 
 
 ### Step 3: Configure the GitHub action
@@ -71,8 +66,8 @@ jobs:
       uses: codeinspectorio/github-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        code_inspector_access_key: ${{ secrets.CODE_INSPECTOR_ACCESS_KEY }}
-        code_inspector_secret_key: ${{ secrets.CODE_INSPECTOR_SECRET_KEY }}
+        code_inspector_api_token: ${{ secrets.CODE_INSPECTOR_API_TOKEN }}
+        force_ref: 'none'
         min_quality_grade: 'WARNING'
         min_quality_score: '50'
         max_defects_rate: '0.0001'
@@ -85,9 +80,10 @@ jobs:
 The following parameters should *NOT* be changed:
 
  * **repo_token**: this is how Code Inspector can access your repository
- * **code_inspector_access_key** and **code_inspector_access_key**: this is how the action can communicate with the Code Inspector analysis engine.
+ * **code_inspector_api_token**: this is how the action can communicate with the Code Inspector analysis engine.
 
 The following parameters can be changed:
+ * **force_branch** is used to force the branch being checked. Use 'none' if you want to analyze the current branch.
  * **min_quality_grade**: the minimum grade your project should have. Valid values are: `EXCELLENT`, `GOOD`, `NEUTRAL`, `WARNING`, `CRITICAL`
  * **min_quality_score**: the minimum code quality score your project should have. This is a value between `0` and `100`.
  * **max_defects_rate**: the number of defects per line of code. For example, the value `0.001` means 1 defect per 1000 lines of codes.
