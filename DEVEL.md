@@ -4,5 +4,5 @@
 ## Build the container
 
 ```bash
-docker build -t code-inspector-github-action .
+docker build -t codiga-github-action .
 ```

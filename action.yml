@@ -1,19 +1,11 @@
-name: 'Code Inspector GitHub action'
+name: 'Codiga GitHub action'
 description: 'Ensure your code quality meet given standards'
 inputs:
   repo_token:
     description: 'Token to checkout the repository.'
     required: true
-  code_inspector_access_key:
-    description: 'Access key on Code Inspector. Set to none if you use the API Token.'
-    required: true
-    default: ''
-  code_inspector_secret_key:
-    description: 'Secret key on Code Inspector. Set to none if you use the API Token.'
-    required: true
-    default: ''
-  code_inspector_api_token:
-    description: 'API Token to access Code Inspector. Set to none if you use access and secret keys'
+  codiga_api_token:
+    description: 'API Token to access Codiga. Set to none if you use access and secret keys'
     required: true
     default: ''
   min_quality_grade:
@@ -37,7 +29,7 @@ inputs:
     required: true
     default: '0'
   project_name:
-    description: 'Project on code inspector. Will use the preferences of this analysis. Leave blank and no preferences are used'
+    description: 'Project on codiga. Will use the preferences of this analysis. Leave blank and no preferences are used'
     required: true
     default: ''
   max_timeout_sec:

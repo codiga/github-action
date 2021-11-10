@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-CODE_INSPECTOR_BIN="/usr/bin/code-inspector-github-action"
+CODIGA_BIN="/usr/bin/codiga-github-action"
 
 MIN_QUALITY_GRADE=$1
 MIN_QUALITY_SCORE=$2
@@ -12,7 +12,7 @@ MAX_TIMEOUT_SEC=$7
 FORCE_REF=$8
 
 
-echo "Code Inspector GitHub action"
+echo "Codiga GitHub action"
 echo "Running with this parameters"
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "MIN_QUALITY_GRADE:          ${MIN_QUALITY_GRADE}"
@@ -25,15 +25,9 @@ echo "MAX_TIMEOUT_SEC:            ${MAX_TIMEOUT_SEC}"
 echo "FORCE_REF:                  ${FORCE_REF}"
 
 
-if [ "$INPUT_CODE_INSPECTOR_API_TOKEN" != "" ]; then
+if [ "$INPUT_CODIGA_API_TOKEN" != "" ]; then
   echo "Authentication using API token"
-  export CODE_INSPECTOR_API_TOKEN=${INPUT_CODE_INSPECTOR_API_TOKEN}
-fi
-
-if [ "$INPUT_CODE_INSPECTOR_ACCESS_KEY" != "" ] && [ "$INPUT_CODE_INSPECTOR_SECRET_KEY" != "" ]; then
-  echo "Authentication using access/secret keys"
-  export CODE_INSPECTOR_ACCESS_KEY=${INPUT_CODE_INSPECTOR_ACCESS_KEY}
-  export CODE_INSPECTOR_SECRET_KEY=${INPUT_CODE_INSPECTOR_SECRET_KEY}
+  export CODIGA_API_TOKEN=${INPUT_CODIGA_API_TOKEN}
 fi
 
 
@@ -48,7 +42,7 @@ if [ "$FORCE_REF" != "" ] && [ "$FORCE_REF" != "none" ]; then
   SHA_TO_CHECK="none"
 fi
 
-${CODE_INSPECTOR_BIN} \
+${CODIGA_BIN} \
   --token "${INPUT_REPO_TOKEN}" \
   --actor "${GITHUB_ACTOR}" \
   --repository "${GITHUB_REPOSITORY}" \
