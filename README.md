@@ -83,17 +83,17 @@ The following parameters should *NOT* be changed:
  * **codiga_api_token**: this is how the action can communicate with the Codiga analysis engine.
 
 The following parameters can be changed:
- * **force_branch** is used to force the branch being checked. Use 'none' if you want to analyze the current branch.
- * **min_quality_grade**: the minimum grade your project should have. Valid values are: `EXCELLENT`, `GOOD`, `NEUTRAL`, `WARNING`, `CRITICAL`
- * **min_quality_score**: the minimum code quality score your project should have. This is a value between `0` and `100`.
- * **max_defects_rate**: the number of defects per line of code. For example, the value `0.001` means 1 defect per 1000 lines of codes.
- * **max_complex_functions_rate**: the rate of complex functions (e.g. functions with high cyclomatic complexity). 
+ * **force_branch** (optional) is used to force the branch being checked. Use 'none' if you want to analyze the current branch.
+ * **min_quality_grade**: (optional - if ommitted, specify `min_quality_score`) the minimum grade your project should have. Valid values are: `EXCELLENT`, `GOOD`, `NEUTRAL`, `WARNING`, `CRITICAL`
+ * **min_quality_score**: (optional - if ommitted, specify `min_quality_grade`) the minimum code quality score your project should have. This is a value between `0` and `100`.
+ * **max_defects_rate**: (optional) the number of defects per line of code. For example, the value `0.001` means 1 defect per 1000 lines of codes.
+ * **max_complex_functions_rate**: (optional) the rate of complex functions (e.g. functions with high cyclomatic complexity). 
    For example, a value of `0.5` means that the code should not have more than 50% of functions with high complexity.
- * **max_long_functions_rate**: the rate of long functions (e.g. functions that are too long to be correctly read by developers). 
+ * **max_long_functions_rate**: (optional) the rate of long functions (e.g. functions that are too long to be correctly read by developers). 
    For example, a value of `0.4` means that the code should not have more than 40% of long functions.
- * **project_name**: the name of the project on [Codiga](https://www.codiga.io). This argument is optional:
+ * **project_name**: (optional) the name of the project on [Codiga](https://www.codiga.io). This argument is optional:
    if you set a project name, the analysis engine will use the preferences of this project. Leave blank for not using a project.
- * **max_timeout_sec**: how many seconds the analysis should come back to you. Default is 600 secconds (10 minutes.)
+ * **max_timeout_sec**: (optional) how many seconds the analysis should come back to you. Default is 600 secconds (10 minutes.)
 
 ### Step 4: Enjoy while drinking ☕
 
