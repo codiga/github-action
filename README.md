@@ -1,5 +1,4 @@
-[![Code Quality](https://api.codiga.io/project/29694/score/svg)](https://app.codiga.io/public/project/29694/github-action/dashboard)
-[![Code Grade](https://api.codiga.io/project/29694/status/svg)](https://app.codiga.io/public/project/29694/github-action/dashboard)
+[Datadog acquired Codiga](https://www.codiga.io/blog/codiga-joins-datadog/). This repository is no longer active.
 
 # Codiga GitHub Action
 
